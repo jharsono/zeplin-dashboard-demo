@@ -77,11 +77,21 @@ const App = () => {
         <tr key={project.id}>
           <td>{project.name}</td>
           <td>{project.platform}</td>
-          <td>{project.workflowStatus}</td>
+          
+          {project.workflowStatus ? (
+            <td>{project.workflowStatus.name}</td>
+          ) : (
+            <td>-</td>
+          )}
+
           <td>{project.numberOfMembers}</td>
           <td>{project.numberOfScreens}</td>
-          {project.linkedStyleguide && 
+          
+          {project.linkedStyleguide ? (
             <td><a href={`http://app.zeplin.io/styleguide/${project.linkedStyleguide.id}`} target="blank">{getStyleguideNameFromId(project.linkedStyleguide)}</a> </td>
+          ) : (
+            <td>-</td>
+          )
           }
         </tr>
       )
